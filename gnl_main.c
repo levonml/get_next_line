@@ -6,7 +6,7 @@
 /*   By: lstepany <lstepany@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/10 09:26:24 by lstepany          #+#    #+#             */
-/*   Updated: 2020/07/12 19:24:49 by lstepany         ###   ########.fr       */
+/*   Updated: 2020/07/12 23:20:52 by lstepany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ int main(void)
 	
 	i = 0;
 	fd = open("text.txt", O_RDONLY);
-	while (i < 3)
+	while (i < 4)
 	{
 		j = get_next_line(fd, &line);
 		printf("%s", line);
 		i++;
 	}
-	printf("\nj = %d\n", j);
+	printf("j = %d\n", j);
 	return (0);
 }
