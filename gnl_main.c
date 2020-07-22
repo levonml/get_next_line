@@ -6,7 +6,7 @@
 /*   By: lstepany <lstepany@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/10 09:26:24 by lstepany          #+#    #+#             */
-/*   Updated: 2020/07/13 18:04:37 by lstepany         ###   ########.fr       */
+/*   Updated: 2020/07/22 23:39:53 by lstepany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,32 +16,55 @@
 #include "get_next_line.h"
 #include "libft.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <sys/errno.h>
 int main(int argc, char **argv)
 {
-	int fd;
+	int fd1;
+	int fd2;
 	char *line;
-//	int i;
+	int i;
 	int j;
 	
-	j = 1;
-	if (argc == 1 )
+	j = 0;
+		if (argc < 2 )
 	{
-		//	printf("this is printf %s\n",	argv[1]);
-		fd = 0;
+  	//	printf("this is printf %s\n",	argv[1]);
+		fd1 = 0;
+		fd2 = 0;
 	}
 	else
 	{
-		fd = open(argv[1], O_RDONLY);
-//	if (fd == -1)
-		//	printf("error N ", errno);
+		fd1 = open(argv[1], O_RDONLY);
+		if (fd1 == -1)
+			printf("error N %d", errno);
+		/*	fd2 = open(argv[2], O_RDONLY);
+		if (fd2 == -1)
+		printf("error N %d", errno);*/
 	}
-	while (j == 1)
+	i = 0;
+	while (i < 3)//get_next_line(fd1, &line) > 0)
 	{
-		j = get_next_line(0, &line);
-		printf("%s", line);
-//		i++;
+			get_next_line(fd1, &line);
+				   	printf("%s\n", line);
+			
+						free(line);
+		i++;
 	}
-	printf("j = %d\n", j);
+	//	printf("%d\n", i);
+	/*		while (j < 2)//get_next_line(fd, &line) > 0)
+	{
+			get_next_line(fd2, &line);
+		   	printf("%s\n", line);
+			
+			//	free(line);
+		j++;
+	}
+			get_next_line(fd1, &line);
+		   	printf("%s\n", line);
+	*/
+	//	printf("fd = %d\n", fd);
+	//	printf("j = %d\n", j);
+
 	return (0);
 }
