@@ -6,7 +6,7 @@
 /*   By: lstepany <lstepany@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 18:25:41 by lstepany          #+#    #+#             */
-/*   Updated: 2020/06/22 17:01:32 by lstepany         ###   ########.fr       */
+/*   Updated: 2020/08/06 14:15:40 by lstepany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@
 char	*ft_strdup(const char *src)
 {
 	int		i;
+	size_t	len;
 	char	*res;
 
-	res = (char*)malloc((ft_strlen(src) + 1) * sizeof(char));
+	len = ft_strlen(src);
+	res = (char*)malloc((len + 1) * sizeof(char));
 	if (res == NULL)
 	{
 		return (NULL);

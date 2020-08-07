@@ -6,7 +6,7 @@
 #    By: lstepany <lstepany@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/26 21:39:40 by lstepany          #+#    #+#              #
-#    Updated: 2020/07/02 13:50:45 by lstepany         ###   ########.fr        #
+#    Updated: 2020/07/27 12:14:22 by lstepany         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -29,7 +29,7 @@ OBJ = ft_bzero.o ft_memccpy.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o\
 	ft_putstr.o ft_strdel.o ft_striteri.o ft_strmapi.o ft_strsplit.o ft_memalloc.o \
 	ft_putchar_fd.o ft_putnbr.o ft_putstr_fd.o ft_strequ.o ft_strjoin.o ft_strnequ.o \
 	ft_strsub.o ft_lstnew.o ft_lstmap.o	ft_lstadd.o ft_lstdelone.o ft_lstdel.o ft_lstiter.o
-HEADER = libft.h
+HEADER = includes
 GCC = gcc -Wall -Wextra -Werror
 
 all:$(NAME)
@@ -38,7 +38,7 @@ $(NAME):$(OBJ)
 	ar rc $(NAME) $(OBJ)
 
 $(OBJ): %.o: %.c $(HEADER)
-	$(GCC) -c $<
+	$(GCC) -c $< -I includes
 clean:
 	rm -rf *.o *~ 
 fclean:clean

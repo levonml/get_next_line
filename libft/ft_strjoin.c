@@ -6,7 +6,7 @@
 /*   By: lstepany <lstepany@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/16 21:25:58 by lstepany          #+#    #+#             */
-/*   Updated: 2020/06/23 12:10:24 by lstepany         ###   ########.fr       */
+/*   Updated: 2020/08/06 14:15:11 by lstepany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,13 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char *join;
+	char	*join;
+	size_t	len1;
+	size_t	len2;
 
-	join = (char*)malloc(sizeof(char*) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	join = (char*)malloc(sizeof(char*) * (len1 + len2 + 1));
 	if (join == NULL)
 		return (NULL);
 	ft_strcpy(join, s1);

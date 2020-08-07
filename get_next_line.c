@@ -6,7 +6,7 @@
 /*   By: lstepany <lstepany@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/10 09:23:07 by lstepany          #+#    #+#             */
-/*   Updated: 2020/07/27 15:41:14 by lstepany         ###   ########.fr       */
+/*   Updated: 2020/08/06 14:20:13 by lstepany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ int		read_all(const int fd, char **store)
 
 	if (!(*store))
 		*store = ft_strnew(0);
-	if (fd < 0)
-		return (-1);
 	while ((ret = read(fd, buf, BUFF_SIZE)))
 	{
 		if (ret < 0)
@@ -46,8 +44,7 @@ int		read_all(const int fd, char **store)
 		buf[ret] = '\0';
 		temp = ft_strjoin(*store, buf);
 		free(*store);
-		*store = ft_strdup(temp);
-		free(temp);
+		*store = temp;
 		if (ft_strchr(buf, '\n'))
 			break ;
 	}
@@ -56,17 +53,18 @@ int		read_all(const int fd, char **store)
 
 int		get_next_line(const int fd, char **line)
 {
-	static	char	*store[10];
+	static	char	*store[MAX_FD];
 	char			*temp;
 	int				ret;
+	int				t;
 
-	if (fd < 0 || (ret = read_all(fd, &store[fd])) < 0)
+	if ((fd < 0) || (fd > 4096) || (ret = read_all(fd, &store[fd])) < 0)
 		return (-1);
 	if (ret == 0 && *store[fd] == '\0')
 		return (0);
-	if ((store[fd]) && ft_newline(store[fd]) != -1)
+	if ((store[fd]) && (t = ft_newline(store[fd])) != -1)
 	{
-		*line = ft_strsub(store[fd], 0, ft_newline(store[fd]));
+		*line = ft_strsub(store[fd], 0, t);
 		temp = ft_strdup(ft_strchr(store[fd], '\n') + 1);
 		free(store[fd]);
 		store[fd] = temp;
