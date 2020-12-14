@@ -1,4 +1,4 @@
-GET_NEXT_LINE
+# GET_NEXT_LINE
 
 GNL is a function that returns a line read from a file descriptor.
 
